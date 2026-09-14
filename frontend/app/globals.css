@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+html,
+body {
+  height: 100%;
+}
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.user-bubble {
+  max-width: 85%;
+  float: right;
+  justify-content: end;
+}
+.chat-bubble {
+  max-width: 85%;
+  float: left;
+  justify-content: start;
+}
+.bubble {
+  max-width: 85%;
+}
+
+@media screen and (max-width: 768px) {
+  #link {
+    display: none;
+  }
+}

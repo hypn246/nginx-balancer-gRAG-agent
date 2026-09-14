@@ -1,0 +1,47 @@
+services:
+  stress:
+    image: polinux/stress
+    container_name: stress
+    command:
+      - stress
+      - --cpu
+      - "4"
+      - --vm
+      - "2"
+      - --vm-bytes
+      - "2G"
+      - --timeout
+      - "1800s"
+    networks:
+      - monitoring
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+    networks:
+      - monitoring
+
+  node-exporter-1:
+    image: prom/node-exporter:latest
+    container_name: node-exporter-1
+    ports:
+      - "9101:9100"
+    networks:
+      - monitoring
+
+  node-exporter-2:
+    image: prom/node-exporter:latest
+    container_name: node-exporter-2
+    ports:
+      - "9102:9100"
+    networks:
+      - monitoring
+
+networks:
+  monitoring:
+    driver: bridge
