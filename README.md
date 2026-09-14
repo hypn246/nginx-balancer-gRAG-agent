@@ -167,6 +167,8 @@ docker-compose -f ./neo4j.yaml up -d
 
 2. If you want to build everything from scratch, run these stuff ONE BY ONE:
 
+Dowload this in `./plugins` by [github]("https://github.com/neo4j/graph-data-science/releases), it too big, i counlnt add here.
+
 ```python
 python -m gRAG.extractor
 py -m gRAG.community_builder --build
